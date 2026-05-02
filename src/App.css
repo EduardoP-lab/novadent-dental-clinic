@@ -765,6 +765,251 @@
   animation-delay: -1.7s;
 }
 
+.patients-section {
+  background:
+    linear-gradient(180deg, rgba(247, 251, 251, 0.94), rgba(240, 253, 250, 0.76)),
+    radial-gradient(ellipse at 50% 18%, rgba(20, 184, 166, 0.14), transparent 32%),
+    radial-gradient(ellipse at 82% 84%, rgba(250, 204, 21, 0.12), transparent 30%);
+}
+
+.patients-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 82px),
+    repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.025) 0 1px, transparent 1px 82px);
+  mask-image: radial-gradient(ellipse at center, #000 0 48%, transparent 75%);
+}
+
+.patients-kicker {
+  position: relative;
+  overflow: hidden;
+}
+
+.patients-kicker::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 18%, rgba(255, 255, 255, 0.85), transparent 48%);
+  transform: translateX(-125%);
+  animation: hero-sheen 4.8s ease-in-out infinite;
+}
+
+.patients-carousel-wrap {
+  position: relative;
+  min-height: 31rem;
+  perspective: 1400px;
+}
+
+.patients-carousel {
+  position: relative;
+  height: 31rem;
+  overflow: hidden;
+}
+
+.patient-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(88vw, 38rem);
+  cursor: pointer;
+  outline: none;
+  transform-style: preserve-3d;
+  transition:
+    transform 760ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    opacity 520ms ease,
+    filter 520ms ease;
+}
+
+.patient-slide-current {
+  z-index: 4;
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+}
+
+.patient-slide-prev {
+  z-index: 2;
+  opacity: 0.58;
+  filter: saturate(0.85) blur(0.2px);
+  transform: translate(calc(-50% - min(32vw, 24rem)), -50%) scale(0.76) rotateY(16deg);
+}
+
+.patient-slide-next {
+  z-index: 2;
+  opacity: 0.58;
+  filter: saturate(0.85) blur(0.2px);
+  transform: translate(calc(-50% + min(32vw, 24rem)), -50%) scale(0.76) rotateY(-16deg);
+}
+
+.patient-slide-hidden {
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate(-50%, -50%) scale(0.62) rotateY(0deg);
+}
+
+.patient-card {
+  position: relative;
+  min-height: 24rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 2rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(240, 253, 250, 0.82)),
+    repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 18px);
+  padding: 1.4rem;
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.13);
+  backdrop-filter: blur(26px);
+  transition: border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.patient-card::before {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  content: "";
+  background:
+    conic-gradient(
+      from var(--nav-angle, 0deg),
+      transparent 0 16%,
+      rgba(94, 234, 212, 0.72),
+      rgba(255, 255, 255, 0.9),
+      rgba(250, 204, 21, 0.45),
+      transparent 72% 100%
+    );
+  opacity: 0;
+  transition: opacity 420ms ease;
+  animation: nav-border-spin 10s linear infinite;
+}
+
+.patient-slide-current .patient-card::before,
+.patient-slide:focus-visible .patient-card::before {
+  opacity: 0.52;
+}
+
+.patient-card::after {
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  content: "";
+  border-radius: calc(2rem - 1px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(240, 253, 250, 0.84)),
+    radial-gradient(circle at 18% 18%, rgba(94, 234, 212, 0.12), transparent 34%);
+}
+
+.patient-card > *:not(.patient-card-glow) {
+  position: relative;
+}
+
+.patient-card-glow {
+  position: absolute;
+  right: -18%;
+  bottom: -28%;
+  z-index: 1;
+  width: 18rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: rgba(94, 234, 212, 0.22);
+  filter: blur(30px);
+  animation: patient-glow-drift 6s ease-in-out infinite;
+}
+
+.patient-star {
+  color: #facc15;
+  filter: drop-shadow(0 6px 14px rgba(250, 204, 21, 0.22));
+  transform-origin: center;
+}
+
+.patient-slide-current .patient-star {
+  animation: patient-star-pop 1.8s ease-in-out infinite;
+}
+
+.patient-slide-current .patient-star:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.patient-slide-current .patient-star:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.patient-slide-current .patient-star:nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.patient-slide-current .patient-star:nth-child(5) {
+  animation-delay: 360ms;
+}
+
+.patient-avatar {
+  transition: transform 320ms ease, background-color 320ms ease;
+}
+
+.patient-slide-current:hover .patient-avatar,
+.patient-slide:focus-visible .patient-avatar {
+  background: #0f766e;
+  transform: rotate(-5deg) scale(1.04);
+}
+
+.patient-control {
+  position: absolute;
+  top: 50%;
+  z-index: 8;
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  transform: translateY(-50%);
+  backdrop-filter: blur(20px);
+  transition: border-color 260ms ease, background-color 260ms ease, transform 260ms ease;
+}
+
+.patient-control:hover,
+.patient-control:focus-visible {
+  border-color: rgba(20, 184, 166, 0.35);
+  background: rgba(240, 253, 250, 0.92);
+  transform: translateY(-50%) scale(1.05);
+  outline: none;
+}
+
+.patient-control-prev {
+  left: 0;
+}
+
+.patient-control-next {
+  right: 0;
+}
+
+.patient-dot {
+  width: 0.68rem;
+  height: 0.68rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.18);
+  transition: width 260ms ease, background-color 260ms ease, transform 260ms ease;
+}
+
+.patient-dot:hover,
+.patient-dot:focus-visible {
+  background: rgba(20, 184, 166, 0.55);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.patient-dot-active {
+  width: 2.2rem;
+  background: #14b8a6;
+}
+
 @property --nav-angle {
   syntax: "<angle>";
   inherits: false;
@@ -1080,6 +1325,28 @@
   }
 }
 
+@keyframes patient-glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-1.2rem, -0.6rem, 0) scale(1.08);
+  }
+}
+
+@keyframes patient-star-pop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  45% {
+    transform: translateY(-0.16rem) scale(1.12);
+  }
+}
+
 @media (max-width: 1023px) {
   .hero-title {
     max-width: 14ch;
@@ -1236,6 +1503,73 @@
 
   .technology-hud strong {
     font-size: 0.88rem;
+  }
+
+  .patients-section {
+    padding-top: 4rem;
+  }
+
+  .patients-carousel-wrap {
+    min-height: 34rem;
+  }
+
+  .patients-carousel {
+    height: 30rem;
+    overflow: visible;
+  }
+
+  .patient-slide {
+    width: min(82vw, 24rem);
+  }
+
+  .patient-slide-current {
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+  }
+
+  .patient-slide-prev {
+    opacity: 0.34;
+    transform: translate(calc(-50% - 58vw), -50%) scale(0.72) rotateY(18deg);
+  }
+
+  .patient-slide-next {
+    opacity: 0.34;
+    transform: translate(calc(-50% + 58vw), -50%) scale(0.72) rotateY(-18deg);
+  }
+
+  .patient-card {
+    min-height: 25.5rem;
+    border-radius: 1.6rem;
+    padding: 1rem;
+  }
+
+  .patient-card::after {
+    border-radius: calc(1.6rem - 1px);
+  }
+
+  .patient-card p {
+    font-size: 1.05rem;
+    line-height: 1.75rem;
+  }
+
+  .patient-control {
+    top: auto;
+    bottom: 0;
+    width: 3rem;
+    height: 3rem;
+    transform: none;
+  }
+
+  .patient-control:hover,
+  .patient-control:focus-visible {
+    transform: scale(1.05);
+  }
+
+  .patient-control-prev {
+    left: calc(50% - 4rem);
+  }
+
+  .patient-control-next {
+    right: calc(50% - 4rem);
   }
 }
 

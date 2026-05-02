@@ -2,6 +2,7 @@ import './App.css'
 import './normalize.css'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import Pacientes from './components/Pacientes'
 import Tecnologia from './components/Tecnologia'
 import Tratamientos from './components/Tratamientos'
 
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <Tratamientos />
         <Tecnologia />
+        <Pacientes />
       </main>
     </div>
   )
