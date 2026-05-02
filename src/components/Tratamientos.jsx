@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import AOS from 'aos'
+import { Link } from 'react-router-dom'
 
 // Catalogo completo de tratamientos. Cada objeto alimenta tarjetas y modal.
 const tratamientos = [
@@ -85,6 +87,10 @@ function Tratamientos() {
   const closeModal = () => setSelectedTreatment(null)
 
   useEffect(() => {
+    AOS.refreshHard()
+  }, [showAll])
+
+  useEffect(() => {
     if (!selectedTreatment) return undefined
 
     // Permite cerrar el modal con Escape, comportamiento esperado en dialogos.
@@ -113,7 +119,10 @@ function Tratamientos() {
     >
       <div className="mx-auto max-w-7xl">
         {/* Encabezado de la seccion con CTA visible en tablet/desktop. */}
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div
+          className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"
+          data-aos="fade-up"
+        >
           <div className="max-w-2xl">
             <span className="treatments-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
               Tratamientos
@@ -126,12 +135,12 @@ function Tratamientos() {
             </p>
           </div>
 
-          <a
-            href="#cita"
+          <Link
+            to="/agenda-cita"
             className="hidden rounded-full border border-slate-200 bg-white/75 px-6 py-4 text-sm font-black text-slate-900 shadow-sm backdrop-blur-xl transition duration-300 hover:border-teal-200 hover:bg-teal-50 hover:text-teal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 sm:inline-flex"
           >
             Agendar valoracion
-          </a>
+          </Link>
         </div>
 
         {/* Grid de tarjetas. En mobile se ocultan las tarjetas despues de la tercera. */}
@@ -150,6 +159,8 @@ function Tratamientos() {
                 className={`treatment-card group min-h-[12rem] cursor-pointer flex-col justify-between rounded-3xl border border-white/80 bg-white/72 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.07)] backdrop-blur-2xl transition duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_24px_70px_rgba(20,184,166,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 sm:flex ${
                   isMobileHidden ? 'hidden' : 'flex treatment-card-reveal'
                 }`}
+                data-aos="fade-up"
+                data-aos-delay={80 + index * 45}
                 role="button"
                 tabIndex={isMobileHidden ? -1 : 0}
                 style={{ '--delay': `${index * 45}ms` }}

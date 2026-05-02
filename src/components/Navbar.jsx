@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Enlaces principales de la navegacion. Cada href apunta al id de una seccion.
 const navItems = [
-  { label: 'Tratamientos', href: '#tratamientos' },
-  { label: 'Tecnologia', href: '#tecnologia' },
-  { label: 'Pacientes', href: '#pacientes' },
-  { label: 'Ubicacion', href: '#ubicacion' },
+  { label: 'Tratamientos', href: '/#tratamientos' },
+  { label: 'Tecnologia', href: '/#tecnologia' },
+  { label: 'Pacientes', href: '/#pacientes' },
+  { label: 'Ubicacion', href: '/#ubicacion' },
 ]
 
 function Navbar() {
@@ -22,7 +23,7 @@ function Navbar() {
       <nav className="nav-shell pointer-events-auto relative mx-auto flex max-w-7xl items-center justify-between overflow-hidden rounded-[2rem] border border-white/65 bg-white/75 px-4 py-3 shadow-[0_18px_70px_rgba(15,23,42,0.12)] backdrop-blur-2xl sm:px-5">
         {/* Marca/logo de la clinica. El SVG es decorativo y usa aria-hidden. */}
         <a
-          href="#inicio"
+          href="/#inicio"
           aria-label="Ir al inicio"
           className="group relative z-10 flex items-center gap-3"
           onClick={closeMenu}
@@ -74,8 +75,8 @@ function Navbar() {
 
         {/* CTA principal en desktop. */}
         <div className="relative z-10 hidden items-center lg:flex">
-          <a
-            href="#cita"
+          <Link
+            to="/agenda-cita"
             className="cta-button group rounded-full px-5 py-3 text-sm font-black text-slate-950 shadow-[0_15px_35px_rgba(20,184,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
           >
             <span>Agenda cita</span>
@@ -93,7 +94,7 @@ function Navbar() {
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Boton hamburguesa: cambia el estado del menu mobile y actualiza atributos ARIA. */}
@@ -138,13 +139,13 @@ function Navbar() {
 
         {/* CTA secundario dentro del menu mobile. */}
         <div className="mt-3 border-t border-slate-200 pt-3">
-          <a
-            href="#cita"
+          <Link
+            to="/agenda-cita"
             className="block rounded-2xl bg-teal-100 px-4 py-4 text-center text-sm font-black text-teal-900 transition duration-300 hover:bg-teal-200"
             onClick={closeMenu}
           >
             Agendar cita
-          </a>
+          </Link>
         </div>
       </div>
     </header>

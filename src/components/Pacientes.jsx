@@ -94,7 +94,10 @@ function Pacientes() {
     >
       <div className="mx-auto max-w-7xl">
         {/* Encabezado centrado de la seccion. */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div
+          className="mx-auto max-w-3xl text-center"
+          data-aos="fade-up"
+        >
           <span className="patients-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
             Pacientes
           </span>
@@ -107,7 +110,11 @@ function Pacientes() {
         </div>
 
         {/* Contenedor del slider con perspectiva 3D desde CSS. */}
-        <div className="patients-carousel-wrap mt-10">
+        <div
+          className="patients-carousel-wrap mt-10"
+          data-aos="fade-up"
+          data-aos-delay="140"
+        >
           {/* Flecha izquierda del carrusel. */}
           <button
             type="button"

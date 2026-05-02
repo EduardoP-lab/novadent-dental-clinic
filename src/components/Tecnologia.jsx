@@ -26,7 +26,10 @@ function Tecnologia() {
       {/* Grid responsive: texto a la izquierda y visual tecnologico a la derecha. */}
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
         {/* Copy principal y lista de beneficios tecnologicos. */}
-        <div className="technology-copy">
+        <div
+          className="technology-copy"
+          data-aos="fade-right"
+        >
           <span className="technology-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
             Tecnologia
           </span>
@@ -45,6 +48,8 @@ function Tecnologia() {
               <article
                 key={technology.title}
                 className="technology-item flex gap-4 rounded-3xl border border-white/80 bg-white/72 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.07)] backdrop-blur-2xl"
+                data-aos="fade-up"
+                data-aos-delay={120 + index * 80}
                 style={{ '--delay': `${index * 90}ms` }}
               >
                 <span className="technology-dot mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-slate-950 text-white">
@@ -73,7 +78,11 @@ function Tecnologia() {
         </div>
 
         {/* Marco visual con imagen realista generada y efectos ligeros de escaneo/HUD. */}
-        <div className="technology-visual-wrap">
+        <div
+          className="technology-visual-wrap"
+          data-aos="fade-left"
+          data-aos-delay="180"
+        >
           <div className="technology-frame">
             <img
               src={dentalTechnology}

@@ -26,7 +26,10 @@ function Ubicacion() {
       {/* Grid principal: informacion a la izquierda y mapa a la derecha en desktop. */}
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
         {/* Columna de informacion de contacto y llegada. */}
-        <div className="location-info">
+        <div
+          className="location-info"
+          data-aos="fade-right"
+        >
           <span className="location-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
             Ubicacion
           </span>
@@ -41,7 +44,11 @@ function Ubicacion() {
 
           {/* Tarjetas informativas: direccion, horario y contacto. */}
           <div className="mt-8 grid gap-3">
-            <div className="location-detail-card">
+            <div
+              className="location-detail-card"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <span className="location-detail-icon">
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -66,7 +73,11 @@ function Ubicacion() {
               </div>
             </div>
 
-            <div className="location-detail-card">
+            <div
+              className="location-detail-card"
+              data-aos="fade-up"
+              data-aos-delay="170"
+            >
               <span className="location-detail-icon">
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -91,7 +102,11 @@ function Ubicacion() {
               </div>
             </div>
 
-            <div className="location-detail-card">
+            <div
+              className="location-detail-card"
+              data-aos="fade-up"
+              data-aos-delay="240"
+            >
               <span className="location-detail-icon">
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -133,7 +148,11 @@ function Ubicacion() {
         </div>
 
         {/* Columna de mapa. El iframe se estira por CSS para llenar todo el marco. */}
-        <div className="location-map-shell">
+        <div
+          className="location-map-shell"
+          data-aos="fade-left"
+          data-aos-delay="160"
+        >
           <div className="location-map-frame">
             <iframe
               title={`Mapa de ${clinicLocation.name}`}

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 // Chips rapidos que resumen tratamientos principales dentro del Hero.
 const treatments = [
   'Limpieza dental',
@@ -23,7 +25,11 @@ function Hero() {
       {/* Layout principal: copy a la izquierda y pieza visual dental a la derecha. */}
       <div className="hero-grid relative z-10 mx-auto lg:grid sm:flex sm:flex-col max-w-7xl items-center gap-7 sm:gap-9 lg:min-h-[calc(100vh-9rem)] lg:grid-cols-[1.02fr_0.98fr] lg:gap-12">
         {/* Bloque de texto, CTA y chips de servicios. */}
-        <div className="hero-copy max-w-3xl">
+        <div
+          className="hero-copy max-w-3xl"
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
           {/* Kicker superior con punto animado para dar sensacion de estado activo. */}
           <div className="hero-kicker inline-flex max-w-full items-center gap-3 rounded-full border border-white/70 bg-white/70 px-4 py-2 shadow-[0_14px_40px_rgba(15,23,42,0.08)] backdrop-blur-2xl">
             <span className="hero-kicker-dot" aria-hidden="true" />
@@ -46,8 +52,8 @@ function Hero() {
 
           {/* Acciones principales del Hero. */}
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row lg:justify-start justify-center">
-            <a
-              href="#cita"
+            <Link
+              to="/agenda-cita"
               className="hero-main-cta group inline-flex items-center justify-center gap-3 rounded-full px-6 py-4 text-sm font-black text-slate-950 shadow-[0_20px_45px_rgba(20,184,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
             >
               Agendar cita
@@ -65,7 +71,7 @@ function Hero() {
                   strokeWidth="2.4"
                 />
               </svg>
-            </a>
+            </Link>
 
             <a
               href="#tratamientos"
@@ -90,7 +96,11 @@ function Hero() {
         </div>
 
         {/* Escena visual del Hero: diente SVG, chips flotantes y panel de proceso. */}
-        <div className="hero-stage relative mx-auto grid w-full max-w-[36rem] place-items-center lg:max-w-none">
+        <div
+          className="hero-stage relative mx-auto grid w-full max-w-[36rem] place-items-center lg:max-w-none"
+          data-aos="fade-left"
+          data-aos-delay="220"
+        >
           {/* Anillo de escaneo decorativo animado desde CSS. */}
           <div className="scan-ring" aria-hidden="true" />
 

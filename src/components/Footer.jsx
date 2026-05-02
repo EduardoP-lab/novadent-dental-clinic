@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
+
 // Enlaces internos del footer. Mantienen navegacion rapida hacia secciones clave.
 const footerLinks = [
-  { label: 'Tratamientos', href: '#tratamientos' },
-  { label: 'Tecnologia', href: '#tecnologia' },
-  { label: 'Pacientes', href: '#pacientes' },
-  { label: 'Ubicacion', href: '#ubicacion' },
+  { label: 'Tratamientos', href: '/#tratamientos' },
+  { label: 'Tecnologia', href: '/#tecnologia' },
+  { label: 'Pacientes', href: '/#pacientes' },
+  { label: 'Ubicacion', href: '/#ubicacion' },
 ]
 
 // Redes sociales de ejemplo. Cambia los href por los perfiles reales de la clinica.
@@ -79,10 +81,13 @@ function Footer() {
     <footer className="footer-section relative isolate overflow-hidden px-4 pt-16 pb-8 sm:px-6 sm:pt-20 lg:px-8">
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Bloque principal tipo glass con marca, CTA y navegacion. */}
-        <div className="footer-shell">
+        <div
+          className="footer-shell"
+          data-aos="fade-up"
+        >
           <div className="footer-brand">
             {/* Logo reutilizado en version footer. */}
-            <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Volver al inicio">
+            <a href="/#inicio" className="inline-flex items-center gap-3" aria-label="Volver al inicio">
               <span className="footer-brand-mark grid h-12 w-12 place-items-center rounded-2xl bg-white text-slate-950">
                 <svg className="h-7 w-7" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                   <path
@@ -120,8 +125,8 @@ function Footer() {
             <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">
               Agenda tu valoracion y recibe un plan claro.
             </h2>
-            <a
-              href="#cita"
+            <Link
+              to="/agenda-cita"
               className="footer-main-cta mt-6 inline-flex items-center justify-center gap-3 rounded-full px-6 py-4 text-sm font-black text-slate-950"
             >
               Agendar cita
@@ -134,7 +139,7 @@ function Footer() {
                   strokeWidth="2.4"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Enlaces internos para navegar rapidamente sin volver al header. */}
@@ -168,7 +173,11 @@ function Footer() {
         </div>
 
         {/* Barra inferior con datos legales y microcopy. */}
-        <div className="footer-bottom">
+        <div
+          className="footer-bottom"
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
           <p>© {currentYear} NovaDent. Todos los derechos reservados.</p>
           <p>Diseno moderno para una experiencia dental mas clara.</p>
         </div>
