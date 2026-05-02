@@ -2,6 +2,7 @@ import './App.css'
 import './normalize.css'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import Tecnologia from './components/Tecnologia'
 import Tratamientos from './components/Tratamientos'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <main>
         <Hero />
         <Tratamientos />
+        <Tecnologia />
       </main>
     </div>
   )

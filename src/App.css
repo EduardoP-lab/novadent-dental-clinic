@@ -574,6 +574,197 @@
   transform: translateX(125%);
 }
 
+.technology-section {
+  background:
+    linear-gradient(180deg, rgba(240, 253, 250, 0.78), rgba(247, 251, 251, 0.94)),
+    radial-gradient(ellipse at 86% 20%, rgba(20, 184, 166, 0.14), transparent 34%),
+    radial-gradient(ellipse at 12% 82%, rgba(250, 204, 21, 0.1), transparent 30%);
+}
+
+.technology-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(120deg, transparent 0 34%, rgba(20, 184, 166, 0.09) 34% 35%, transparent 35% 100%),
+    repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.03) 0 1px, transparent 1px 86px);
+  mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+}
+
+.technology-copy > * {
+  animation: technology-copy-enter 680ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.technology-copy > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.technology-copy > *:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.technology-copy > *:nth-child(4) {
+  animation-delay: 230ms;
+}
+
+.technology-kicker,
+.technology-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.technology-kicker::before,
+.technology-item::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 18%, rgba(255, 255, 255, 0.82), transparent 48%);
+  transform: translateX(-125%);
+  transition: transform 720ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.technology-kicker:hover::before,
+.technology-item:hover::before {
+  transform: translateX(125%);
+}
+
+.technology-item {
+  animation: technology-item-enter 560ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  animation-delay: var(--delay);
+  transition: border-color 280ms ease, transform 280ms ease, box-shadow 280ms ease;
+}
+
+.technology-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.technology-item:hover {
+  border-color: rgba(20, 184, 166, 0.28);
+  box-shadow: 0 24px 70px rgba(20, 184, 166, 0.12);
+  transform: translateY(-3px);
+}
+
+.technology-dot {
+  transition: background-color 280ms ease, transform 280ms ease;
+}
+
+.technology-item:hover .technology-dot {
+  background: #0f766e;
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.technology-visual-wrap {
+  perspective: 1200px;
+}
+
+.technology-frame {
+  position: relative;
+  min-height: clamp(22rem, 46vw, 38rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 2.2rem;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.13);
+  isolation: isolate;
+  transform-style: preserve-3d;
+  animation: technology-frame-enter 820ms cubic-bezier(0.2, 0.9, 0.2, 1) both, technology-frame-float 7s ease-in-out 900ms infinite;
+}
+
+.technology-frame::before {
+  position: absolute;
+  inset: -2px;
+  z-index: 1;
+  content: "";
+  background:
+    conic-gradient(
+      from var(--nav-angle, 0deg),
+      transparent 0 18%,
+      rgba(94, 234, 212, 0.75),
+      rgba(255, 255, 255, 0.86),
+      rgba(250, 204, 21, 0.42),
+      transparent 72% 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: nav-border-spin 10s linear infinite;
+}
+
+.technology-frame::after {
+  position: absolute;
+  inset: 1px;
+  z-index: 2;
+  content: "";
+  border-radius: calc(2.2rem - 1px);
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45), inset 0 -80px 120px rgba(15, 23, 42, 0.22);
+}
+
+.technology-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: scale(1.03);
+  transition: transform 650ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.technology-frame:hover .technology-image {
+  transform: scale(1.075);
+}
+
+.technology-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(180deg, transparent, rgba(94, 234, 212, 0.24), transparent),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  height: 34%;
+  transform: translateY(-120%);
+  animation: technology-scan-pass 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.technology-hud {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  gap: 0.2rem;
+  min-width: 9rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.8rem 0.95rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(22px);
+  animation: technology-hud-float 5.2s ease-in-out infinite;
+}
+
+.technology-hud span {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.technology-hud strong {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.technology-hud-main {
+  left: 1rem;
+  top: 1rem;
+}
+
+.technology-hud-side {
+  right: 1rem;
+  bottom: 1rem;
+  animation-delay: -1.7s;
+}
+
 @property --nav-angle {
   syntax: "<angle>";
   inherits: false;
@@ -809,6 +1000,86 @@
   }
 }
 
+@keyframes technology-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes technology-item-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-18px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes technology-frame-enter {
+  from {
+    opacity: 0;
+    transform: rotateX(8deg) rotateY(-10deg) translateY(28px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) rotateY(0deg) translateY(0) scale(1);
+  }
+}
+
+@keyframes technology-frame-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-0.7rem) rotate(0.35deg);
+  }
+}
+
+@keyframes technology-scan-pass {
+  0%,
+  22% {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  62% {
+    opacity: 1;
+  }
+
+  82%,
+  100% {
+    opacity: 0;
+    transform: translateY(260%);
+  }
+}
+
+@keyframes technology-hud-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.55rem);
+  }
+}
+
 @media (max-width: 1023px) {
   .hero-title {
     max-width: 14ch;
@@ -934,6 +1205,37 @@
 
   .care-panel > div:last-child > div {
     padding-block: 0.65rem;
+  }
+
+  .technology-section {
+    padding-top: 3.5rem;
+  }
+
+  .technology-frame {
+    min-height: 22rem;
+    border-radius: 1.6rem;
+  }
+
+  .technology-frame::after {
+    border-radius: calc(1.6rem - 1px);
+  }
+
+  .technology-image {
+    object-position: 62% center;
+  }
+
+  .technology-hud {
+    min-width: 7.7rem;
+    padding: 0.68rem 0.78rem;
+  }
+
+  .technology-hud span {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .technology-hud strong {
+    font-size: 0.88rem;
   }
 }
 
