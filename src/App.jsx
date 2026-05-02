@@ -1,5 +1,6 @@
 import './App.css'
 import './normalize.css'
+import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Pacientes from './components/Pacientes'
@@ -21,6 +22,7 @@ function App() {
         <Tecnologia />
         <Pacientes />
         <Ubicacion />
+        <Footer />
       </main>
     </div>
   )
