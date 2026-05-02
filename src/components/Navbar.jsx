@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+// Enlaces principales de la navegacion. Cada href apunta al id de una seccion.
 const navItems = [
   { label: 'Tratamientos', href: '#tratamientos' },
   { label: 'Tecnologia', href: '#tecnologia' },
@@ -8,13 +9,18 @@ const navItems = [
 ]
 
 function Navbar() {
+  // Controla si el menu mobile esta abierto o cerrado.
   const [isOpen, setIsOpen] = useState(false)
 
+  // Cierra el menu al navegar, para que mobile no quede con el panel abierto.
   const closeMenu = () => setIsOpen(false)
 
   return (
+    // Header fijo. pointer-events-none permite que no bloquee clicks fuera de la navbar.
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      {/* Capsula principal con efecto glass y borde animado desde CSS. */}
       <nav className="nav-shell pointer-events-auto relative mx-auto flex max-w-7xl items-center justify-between overflow-hidden rounded-[2rem] border border-white/65 bg-white/75 px-4 py-3 shadow-[0_18px_70px_rgba(15,23,42,0.12)] backdrop-blur-2xl sm:px-5">
+        {/* Marca/logo de la clinica. El SVG es decorativo y usa aria-hidden. */}
         <a
           href="#inicio"
           aria-label="Ir al inicio"
@@ -53,6 +59,7 @@ function Navbar() {
           </span>
         </a>
 
+        {/* Menu de escritorio: se oculta en mobile y aparece desde lg. */}
         <div className="relative z-10 hidden items-center gap-1 rounded-full border border-slate-200/80 bg-white/65 p-1 shadow-inner shadow-slate-200/70 lg:flex">
           {navItems.map((item) => (
             <a
@@ -65,6 +72,7 @@ function Navbar() {
           ))}
         </div>
 
+        {/* CTA principal en desktop. */}
         <div className="relative z-10 hidden items-center lg:flex">
           <a
             href="#cita"
@@ -88,6 +96,7 @@ function Navbar() {
           </a>
         </div>
 
+        {/* Boton hamburguesa: cambia el estado del menu mobile y actualiza atributos ARIA. */}
         <button
           type="button"
           className="menu-button relative z-20 grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white/75 text-slate-950 shadow-sm transition duration-300 hover:border-teal-200 hover:bg-teal-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 lg:hidden"
@@ -105,6 +114,7 @@ function Navbar() {
 
       </nav>
 
+      {/* Panel mobile separado del nav para que no lo recorte el overflow-hidden de la capsula. */}
       <div
         id="mobile-navigation"
         className={`mobile-panel mx-auto mt-3 max-w-7xl rounded-[1.6rem] border border-white/70 bg-white/90 p-3 shadow-[0_24px_80px_rgba(15,23,42,0.18)] backdrop-blur-2xl transition duration-500 lg:hidden ${
@@ -113,6 +123,7 @@ function Navbar() {
       >
         <div className="grid gap-2">
           {navItems.map((item, index) => (
+            // Delay escalonado para que cada enlace entre con una pequena diferencia.
             <a
               key={item.href}
               href={item.href}
@@ -125,6 +136,7 @@ function Navbar() {
           ))}
         </div>
 
+        {/* CTA secundario dentro del menu mobile. */}
         <div className="mt-3 border-t border-slate-200 pt-3">
           <a
             href="#cita"

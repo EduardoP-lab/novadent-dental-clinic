@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+// Catalogo completo de tratamientos. Cada objeto alimenta tarjetas y modal.
 const tratamientos = [
   {
     title: 'Limpieza dental',
@@ -74,23 +75,30 @@ const tratamientos = [
 ]
 
 function Tratamientos() {
+  // En mobile mostramos solo 3 tratamientos hasta que el usuario pulse "Ver todos".
   const [showAll, setShowAll] = useState(false)
+
+  // Guarda el tratamiento seleccionado para renderizar su modal de detalle.
   const [selectedTreatment, setSelectedTreatment] = useState(null)
 
+  // Funcion reutilizable para cerrar el modal desde boton, fondo o eventos.
   const closeModal = () => setSelectedTreatment(null)
 
   useEffect(() => {
     if (!selectedTreatment) return undefined
 
+    // Permite cerrar el modal con Escape, comportamiento esperado en dialogos.
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
         setSelectedTreatment(null)
       }
     }
 
+    // Mientras el modal esta abierto, bloqueamos el scroll del body.
     document.addEventListener('keydown', handleEscape)
     document.body.classList.add('scrollBlock')
 
+    // Limpieza: quitamos listener y restauramos scroll al cerrar/desmontar.
     return () => {
       document.removeEventListener('keydown', handleEscape)
       document.body.classList.remove('scrollBlock')
@@ -98,11 +106,13 @@ function Tratamientos() {
   }, [selectedTreatment])
 
   return (
+    // Seccion de tratamientos enlazada desde la Navbar.
     <section
       id="tratamientos"
       className="treatments-section relative isolate overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-7xl">
+        {/* Encabezado de la seccion con CTA visible en tablet/desktop. */}
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <span className="treatments-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
@@ -124,14 +134,17 @@ function Tratamientos() {
           </a>
         </div>
 
+        {/* Grid de tarjetas. En mobile se ocultan las tarjetas despues de la tercera. */}
         <div
           id="tratamientos-lista"
           className="mt-9 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5"
         >
           {tratamientos.map((tratamiento, index) => {
+            // Regla mobile: si no se ha desplegado, solo se ven las primeras 3.
             const isMobileHidden = index > 2 && !showAll
 
             return (
+              // Delay usado por CSS para animar la aparicion de cada tarjeta.
               <article
                 key={tratamiento.title}
                 className={`treatment-card group min-h-[12rem] cursor-pointer flex-col justify-between rounded-3xl border border-white/80 bg-white/72 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.07)] backdrop-blur-2xl transition duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_24px_70px_rgba(20,184,166,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 sm:flex ${
@@ -149,6 +162,7 @@ function Tratamientos() {
                 }}
               >
                 <div>
+                  {/* Icono dental decorativo que refuerza la categoria de tratamiento. */}
                   <div className="treatment-icon grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 text-white shadow-[0_14px_30px_rgba(15,23,42,0.22)]">
                     <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <path
@@ -183,6 +197,7 @@ function Tratamientos() {
           })}
         </div>
 
+        {/* Control mobile para desplegar/colapsar el resto de tratamientos. */}
         <button
           type="button"
           className="treatments-toggle !mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-4 text-sm font-black text-slate-950 shadow-[0_18px_40px_rgba(20,184,166,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 sm:hidden"
@@ -208,12 +223,15 @@ function Tratamientos() {
         </button>
       </div>
 
+      {/* Modal de detalle. Solo existe en el DOM cuando hay tratamiento seleccionado. */}
       {selectedTreatment && (
+        // Click en el fondo cierra el modal.
         <div
           className="treatment-modal-backdrop fixed inset-0 z-[80] grid place-items-center px-4 py-6"
           role="presentation"
           onClick={closeModal}
         >
+          {/* Evita cerrar el modal cuando se hace click dentro de la tarjeta. */}
           <div
             className="treatment-modal relative w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/75 bg-white/86 p-5 shadow-[0_30px_110px_rgba(15,23,42,0.28)] backdrop-blur-2xl sm:p-7"
             role="dialog"
@@ -221,8 +239,10 @@ function Tratamientos() {
             aria-labelledby="treatment-modal-title"
             onClick={(event) => event.stopPropagation()}
           >
+            {/* Glow decorativo interno del modal. */}
             <div className="treatment-modal-glow" aria-hidden="true" />
 
+            {/* Encabezado del modal: categoria, titulo y boton de cerrar. */}
             <div className="relative z-10 flex items-start justify-between gap-4">
               <div>
                 <span className="inline-flex rounded-full bg-teal-100 px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-teal-800">
@@ -257,6 +277,7 @@ function Tratamientos() {
               {selectedTreatment.detail}
             </p>
 
+            {/* Puntos incluidos en el tratamiento seleccionado. */}
             <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-3">
               {selectedTreatment.includes.map((item) => (
                 <div
@@ -268,6 +289,7 @@ function Tratamientos() {
               ))}
             </div>
 
+            {/* Cierre explicito solicitado para el modal. */}
             <div className="relative z-10 mt-7 flex flex-col gap-3 sm:flex-row sm:justify-end">
               <button
                 type="button"

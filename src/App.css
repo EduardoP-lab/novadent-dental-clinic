@@ -1,7 +1,13 @@
+/* ================================
+   Navbar
+   Estilos del header fijo, glassmorphism, menu mobile y CTA.
+================================ */
+
 .nav-shell {
   isolation: isolate;
 }
 
+/* Borde conic animado alrededor de la capsula principal. */
 .nav-shell::before {
   position: absolute;
   inset: -2px;
@@ -20,6 +26,7 @@
   animation: nav-border-spin 9s linear infinite;
 }
 
+/* Capa interna que suaviza el borde y crea el fondo glass. */
 .nav-shell::after {
   position: absolute;
   inset: 1px;
@@ -32,6 +39,7 @@
     rgba(255, 255, 255, 0.78);
 }
 
+/* Logo con brillo diagonal y ligera flotacion. */
 .brand-mark {
   position: relative;
   overflow: hidden;
@@ -52,6 +60,7 @@
   animation: brand-float 5s ease-in-out infinite;
 }
 
+/* Enlaces desktop con fondo animado en hover/focus. */
 .nav-link {
   position: relative;
   overflow: hidden;
@@ -75,6 +84,7 @@
   transform: scaleX(1);
 }
 
+/* CTA compartido de la navbar. */
 .cta-button {
   position: relative;
   display: inline-flex;
@@ -104,6 +114,7 @@
   z-index: 1;
 }
 
+/* Icono hamburguesa animado para mobile. */
 .hamburger {
   position: relative;
   display: grid;
@@ -138,6 +149,7 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
+/* Panel desplegable mobile. */
 .mobile-panel {
   opacity: 0;
   transform: translateY(-12px) scale(0.96);
@@ -154,6 +166,11 @@
   animation-delay: var(--delay);
 }
 
+/* ================================
+   Hero
+   Portada, CTAs, diente SVG y panel de ruta de atencion.
+================================ */
+
 .hero-section {
   background:
     linear-gradient(115deg, rgba(240, 253, 250, 0.88), rgba(255, 255, 255, 0.78) 48%, rgba(236, 253, 245, 0.78)),
@@ -161,6 +178,7 @@
     repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.03) 0 1px, transparent 1px 78px);
 }
 
+/* Iluminacion de fondo del Hero. */
 .hero-section::before {
   position: absolute;
   inset: 0;
@@ -173,6 +191,7 @@
   animation: hero-light-sweep 10s ease-in-out infinite alternate;
 }
 
+/* Grid perspectivo decorativo de la base del Hero. */
 .hero-section::after {
   position: absolute;
   inset: 0;
@@ -188,6 +207,7 @@
   transform-origin: bottom;
 }
 
+/* Entrada escalonada de los elementos de texto. */
 .hero-copy > * {
   animation: hero-copy-enter 780ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
@@ -208,6 +228,7 @@
   animation-delay: 360ms;
 }
 
+/* Kicker superior con sheen animado. */
 .hero-kicker {
   position: relative;
   overflow: hidden;
@@ -222,6 +243,7 @@
   animation: hero-sheen 4.6s ease-in-out infinite;
 }
 
+/* Punto pulsante del kicker. */
 .hero-kicker-dot {
   position: relative;
   display: inline-flex;
@@ -241,6 +263,7 @@
   animation: hero-dot-ping 1.8s ease-out infinite;
 }
 
+/* Limita el ancho del titular para mantener buen ritmo de lectura. */
 .hero-title {
   max-width: 13ch;
   letter-spacing: 0;
@@ -250,6 +273,7 @@
   text-wrap: pretty;
 }
 
+/* CTA principal del Hero con brillo horizontal. */
 .hero-main-cta {
   position: relative;
   overflow: hidden;
@@ -275,6 +299,7 @@
   z-index: 1;
 }
 
+/* Chips de tratamientos destacados. */
 .hero-chip {
   animation: hero-chip-enter 640ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
   animation-delay: calc(460ms + var(--delay));
@@ -287,11 +312,13 @@
   transform: translateY(-4px);
 }
 
+/* Escena visual del diente y scanner. */
 .hero-stage {
   min-height: clamp(30rem, 46vw, 36rem);
   perspective: 1200px;
 }
 
+/* Anillo de escaneo 3D detras del diente. */
 .scan-ring {
   position: absolute;
   width: min(86vw, 34rem);
@@ -321,6 +348,7 @@
   animation: hero-ring-pulse 3s ease-in-out infinite;
 }
 
+/* Contenedor del diente SVG y chips flotantes. */
 .dental-visual {
   position: relative;
   display: grid;
@@ -331,6 +359,7 @@
   animation: hero-visual-enter 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
 
+/* Aura organica detras del diente. */
 .tooth-aura {
   position: absolute;
   width: 70%;
@@ -342,6 +371,7 @@
   animation: hero-aura-morph 7s ease-in-out infinite, nav-border-spin 11s linear infinite;
 }
 
+/* SVG del diente principal. */
 .hero-tooth {
   position: relative;
   z-index: 2;
@@ -378,6 +408,7 @@
   stroke-width: 6;
 }
 
+/* Chips flotantes del visual del Hero. */
 .pulse-chip {
   position: absolute;
   z-index: 4;
@@ -416,6 +447,7 @@
   animation-delay: -2.2s;
 }
 
+/* Panel flotante de proceso clinico. */
 .care-panel {
   position: absolute;
   right: -0.75rem;
@@ -437,6 +469,11 @@
   }
 }
 
+/* ================================
+   Tratamientos
+   Grid de servicios, boton mobile y modal de detalle.
+================================ */
+
 .treatments-section {
   background:
     linear-gradient(180deg, rgba(247, 251, 251, 0.92), rgba(240, 253, 250, 0.78)),
@@ -444,6 +481,7 @@
     radial-gradient(ellipse at 90% 72%, rgba(250, 204, 21, 0.12), transparent 30%);
 }
 
+/* Trama sutil de fondo de la seccion. */
 .treatments-section::before {
   position: absolute;
   inset: 0;
@@ -456,6 +494,7 @@
   mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
 }
 
+/* Elementos con brillo de hover reutilizado dentro de tratamientos. */
 .treatments-kicker,
 .treatment-card,
 .treatments-toggle {
@@ -486,11 +525,13 @@
   z-index: 1;
 }
 
+/* Tarjetas de tratamientos con entrada escalonada. */
 .treatment-card-reveal {
   animation: treatment-card-enter 520ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
   animation-delay: var(--delay);
 }
 
+/* Icono de cada tarjeta. */
 .treatment-icon {
   transition: transform 320ms ease, background-color 320ms ease;
 }
@@ -500,10 +541,12 @@
   transform: rotate(-6deg) scale(1.06);
 }
 
+/* Boton mobile Ver todos / Ver menos. */
 .treatments-toggle {
   background: linear-gradient(135deg, #5eead4 0%, #fef08a 55%, #ffffff 100%);
 }
 
+/* Fondo del modal de tratamientos. */
 .treatment-modal-backdrop {
   background:
     radial-gradient(circle at 50% 18%, rgba(94, 234, 212, 0.2), transparent 28%),
@@ -511,10 +554,12 @@
   animation: modal-backdrop-enter 220ms ease both;
 }
 
+/* Tarjeta modal con borde animado y glassmorphism. */
 .treatment-modal {
   animation: modal-card-enter 420ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
 
+/* Borde conic animado del modal. */
 .treatment-modal::before {
   position: absolute;
   inset: -2px;
@@ -532,6 +577,7 @@
   animation: nav-border-spin 9s linear infinite;
 }
 
+/* Capa interna del modal para legibilidad. */
 .treatment-modal::after {
   position: absolute;
   inset: 1px;
@@ -543,6 +589,7 @@
     repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.04) 0 1px, transparent 1px 18px);
 }
 
+/* Glow decorativo dentro del modal. */
 .treatment-modal-glow {
   position: absolute;
   inset: auto -20% -35% auto;
@@ -554,6 +601,7 @@
   filter: blur(34px);
 }
 
+/* Boton Cerrar del modal. */
 .treatment-modal-close {
   position: relative;
   overflow: hidden;
@@ -574,6 +622,11 @@
   transform: translateX(125%);
 }
 
+/* ================================
+   Tecnologia
+   Seccion con imagen, escaneo visual y etiquetas flotantes.
+================================ */
+
 .technology-section {
   background:
     linear-gradient(180deg, rgba(240, 253, 250, 0.78), rgba(247, 251, 251, 0.94)),
@@ -581,6 +634,7 @@
     radial-gradient(ellipse at 12% 82%, rgba(250, 204, 21, 0.1), transparent 30%);
 }
 
+/* Lineas tecnicas suaves del fondo. */
 .technology-section::before {
   position: absolute;
   inset: 0;
@@ -592,6 +646,7 @@
   mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
 }
 
+/* Entrada escalonada del texto de tecnologia. */
 .technology-copy > * {
   animation: technology-copy-enter 680ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
@@ -608,6 +663,7 @@
   animation-delay: 230ms;
 }
 
+/* Tarjetas de tecnologias y kicker con sheen. */
 .technology-kicker,
 .technology-item {
   position: relative;
@@ -629,6 +685,7 @@
   transform: translateX(125%);
 }
 
+/* Cada item entra con delay y tiene hover ligero. */
 .technology-item {
   animation: technology-item-enter 560ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
   animation-delay: var(--delay);
@@ -646,6 +703,7 @@
   transform: translateY(-3px);
 }
 
+/* Icono/check de cada tecnologia. */
 .technology-dot {
   transition: background-color 280ms ease, transform 280ms ease;
 }
@@ -655,10 +713,12 @@
   transform: rotate(-5deg) scale(1.05);
 }
 
+/* Perspectiva del marco visual. */
 .technology-visual-wrap {
   perspective: 1200px;
 }
 
+/* Marco de imagen con animacion flotante. */
 .technology-frame {
   position: relative;
   min-height: clamp(22rem, 46vw, 38rem);
@@ -672,6 +732,7 @@
   animation: technology-frame-enter 820ms cubic-bezier(0.2, 0.9, 0.2, 1) both, technology-frame-float 7s ease-in-out 900ms infinite;
 }
 
+/* Borde luminoso sobre la imagen. */
 .technology-frame::before {
   position: absolute;
   inset: -2px;
@@ -691,6 +752,7 @@
   animation: nav-border-spin 10s linear infinite;
 }
 
+/* Viñeta interior para hacer legible el HUD. */
 .technology-frame::after {
   position: absolute;
   inset: 1px;
@@ -701,6 +763,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45), inset 0 -80px 120px rgba(15, 23, 42, 0.22);
 }
 
+/* Imagen principal de tecnologia dental. */
 .technology-image {
   position: absolute;
   inset: 0;
@@ -713,6 +776,7 @@
   transform: scale(1.075);
 }
 
+/* Barrido de escaneo sobre la imagen. */
 .technology-scan {
   position: absolute;
   inset: 0;
@@ -726,6 +790,7 @@
   pointer-events: none;
 }
 
+/* Etiquetas flotantes tipo HUD. */
 .technology-hud {
   position: absolute;
   z-index: 4;
@@ -765,6 +830,11 @@
   animation-delay: -1.7s;
 }
 
+/* ================================
+   Pacientes
+   Carrusel custom con slide central y laterales en perspectiva.
+================================ */
+
 .patients-section {
   background:
     linear-gradient(180deg, rgba(247, 251, 251, 0.94), rgba(240, 253, 250, 0.76)),
@@ -772,6 +842,7 @@
     radial-gradient(ellipse at 82% 84%, rgba(250, 204, 21, 0.12), transparent 30%);
 }
 
+/* Fondo de grid radial para el carrusel. */
 .patients-section::before {
   position: absolute;
   inset: 0;
@@ -783,6 +854,7 @@
   mask-image: radial-gradient(ellipse at center, #000 0 48%, transparent 75%);
 }
 
+/* Kicker de pacientes con brillo. */
 .patients-kicker {
   position: relative;
   overflow: hidden;
@@ -797,18 +869,21 @@
   animation: hero-sheen 4.8s ease-in-out infinite;
 }
 
+/* Contenedor de perspectiva del carrusel. */
 .patients-carousel-wrap {
   position: relative;
   min-height: 31rem;
   perspective: 1400px;
 }
 
+/* Escenario donde se posicionan los slides absolutos. */
 .patients-carousel {
   position: relative;
   height: 31rem;
   overflow: hidden;
 }
 
+/* Base comun de cada slide. Las variantes definen posicion y escala. */
 .patient-slide {
   position: absolute;
   top: 50%;
@@ -823,6 +898,7 @@
     filter 520ms ease;
 }
 
+/* Slide activo: centro, mayor escala y maxima opacidad. */
 .patient-slide-current {
   z-index: 4;
   opacity: 1;
@@ -830,6 +906,7 @@
   transform: translate(-50%, -50%) scale(1) rotateY(0deg);
 }
 
+/* Slide anterior visible a la izquierda. */
 .patient-slide-prev {
   z-index: 2;
   opacity: 0.58;
@@ -837,6 +914,7 @@
   transform: translate(calc(-50% - min(32vw, 24rem)), -50%) scale(0.76) rotateY(16deg);
 }
 
+/* Slide siguiente visible a la derecha. */
 .patient-slide-next {
   z-index: 2;
   opacity: 0.58;
@@ -844,6 +922,7 @@
   transform: translate(calc(-50% + min(32vw, 24rem)), -50%) scale(0.76) rotateY(-16deg);
 }
 
+/* Slides fuera de la escena. */
 .patient-slide-hidden {
   z-index: 1;
   pointer-events: none;
@@ -852,6 +931,7 @@
   transform: translate(-50%, -50%) scale(0.62) rotateY(0deg);
 }
 
+/* Tarjeta de resena. */
 .patient-card {
   position: relative;
   min-height: 24rem;
@@ -867,6 +947,7 @@
   transition: border-color 320ms ease, box-shadow 320ms ease;
 }
 
+/* Borde animado solo cuando el slide esta activo o enfocado. */
 .patient-card::before {
   position: absolute;
   inset: -2px;
@@ -891,6 +972,7 @@
   opacity: 0.52;
 }
 
+/* Capa interna para fondo legible de la tarjeta. */
 .patient-card::after {
   position: absolute;
   inset: 1px;
@@ -906,6 +988,7 @@
   position: relative;
 }
 
+/* Glow decorativo dentro de la tarjeta. */
 .patient-card-glow {
   position: absolute;
   right: -18%;
@@ -919,6 +1002,7 @@
   animation: patient-glow-drift 6s ease-in-out infinite;
 }
 
+/* Estrellas de calificacion. */
 .patient-star {
   color: #facc15;
   filter: drop-shadow(0 6px 14px rgba(250, 204, 21, 0.22));
@@ -945,6 +1029,7 @@
   animation-delay: 360ms;
 }
 
+/* Avatar con iniciales del paciente. */
 .patient-avatar {
   transition: transform 320ms ease, background-color 320ms ease;
 }
@@ -955,6 +1040,7 @@
   transform: rotate(-5deg) scale(1.04);
 }
 
+/* Controles anterior/siguiente. */
 .patient-control {
   position: absolute;
   top: 50%;
@@ -989,6 +1075,7 @@
   right: 0;
 }
 
+/* Dots inferiores del carrusel. */
 .patient-dot {
   width: 0.68rem;
   height: 0.68rem;
@@ -1010,18 +1097,265 @@
   background: #14b8a6;
 }
 
+/* ================================
+   Ubicacion
+   Informacion de contacto y mapa embebido.
+================================ */
+
+.location-section {
+  background:
+    linear-gradient(180deg, rgba(240, 253, 250, 0.76), rgba(247, 251, 251, 0.96)),
+    radial-gradient(ellipse at 14% 24%, rgba(20, 184, 166, 0.13), transparent 34%),
+    radial-gradient(ellipse at 82% 72%, rgba(250, 204, 21, 0.12), transparent 30%);
+}
+
+/* Lineas de fondo para conectar con el sistema visual general. */
+.location-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(120deg, transparent 0 28%, rgba(20, 184, 166, 0.09) 28% 29%, transparent 29% 100%),
+    repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.03) 0 1px, transparent 1px 84px);
+  mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+}
+
+/* Entrada escalonada de la columna izquierda. */
+.location-info > * {
+  animation: location-copy-enter 680ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.location-info > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.location-info > *:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.location-info > *:nth-child(4) {
+  animation-delay: 230ms;
+}
+
+.location-info > *:nth-child(5) {
+  animation-delay: 300ms;
+}
+
+/* Kicker, cards y CTA usan el mismo brillo diagonal. */
+.location-kicker,
+.location-detail-card,
+.location-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.location-kicker::before,
+.location-detail-card::before,
+.location-cta::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 18%, rgba(255, 255, 255, 0.85), transparent 48%);
+  transform: translateX(-125%);
+  transition: transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.location-kicker:hover::before,
+.location-detail-card:hover::before,
+.location-cta:hover::before {
+  transform: translateX(125%);
+}
+
+/* Tarjetas de direccion, horario y contacto. */
+.location-detail-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);
+  backdrop-filter: blur(22px);
+  transition: border-color 280ms ease, transform 280ms ease, box-shadow 280ms ease;
+}
+
+.location-detail-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.location-detail-card:hover {
+  border-color: rgba(20, 184, 166, 0.28);
+  box-shadow: 0 24px 70px rgba(20, 184, 166, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Icono de cada dato de ubicacion. */
+.location-detail-icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 1rem;
+  background: #0f172a;
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
+  transition: background-color 280ms ease, transform 280ms ease;
+}
+
+.location-detail-card:hover .location-detail-icon {
+  background: #0f766e;
+  transform: rotate(-5deg) scale(1.05);
+}
+
+/* CTA hacia Google Maps. */
+.location-cta {
+  background: linear-gradient(135deg, #5eead4 0%, #fef08a 55%, #ffffff 100%);
+}
+
+.location-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Perspectiva del mapa. */
+.location-map-shell {
+  perspective: 1200px;
+}
+
+/* Marco del mapa embebido. */
+.location-map-frame {
+  position: relative;
+  min-height: clamp(24rem, 48vw, 39rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 2.2rem;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.13);
+  isolation: isolate;
+  animation: location-map-enter 820ms cubic-bezier(0.2, 0.9, 0.2, 1) both, location-map-float 8s ease-in-out 900ms infinite;
+}
+
+/* Borde luminoso del mapa. */
+.location-map-frame::before {
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  content: "";
+  background:
+    conic-gradient(
+      from var(--nav-angle, 0deg),
+      transparent 0 18%,
+      rgba(94, 234, 212, 0.68),
+      rgba(255, 255, 255, 0.82),
+      rgba(250, 204, 21, 0.42),
+      transparent 72% 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.48;
+  pointer-events: none;
+  animation: nav-border-spin 10s linear infinite;
+}
+
+/* Sombra interna del mapa para integrarlo con la UI. */
+.location-map-frame::after {
+  position: absolute;
+  inset: 1px;
+  z-index: 3;
+  content: "";
+  border-radius: calc(2.2rem - 1px);
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45), inset 0 -80px 120px rgba(15, 23, 42, 0.16);
+}
+
+/* El iframe ocupa todo el marco para evitar zonas blancas. */
+.location-map-frame iframe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+/* Pin pulsante superpuesto sobre el mapa. */
+.location-map-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.18);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: location-pin-pulse 2s ease-out infinite;
+}
+
+.location-map-pin span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid #fff;
+  border-radius: inherit;
+  background: #14b8a6;
+  box-shadow: 0 12px 28px rgba(20, 184, 166, 0.34);
+  transform: translate(-50%, -50%);
+}
+
+/* Tarjeta flotante de identificacion del mapa. */
+.location-floating-card {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  display: grid;
+  gap: 0.2rem;
+  min-width: 10rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0.85rem 1rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(22px);
+  animation: technology-hud-float 5.2s ease-in-out infinite;
+}
+
+.location-floating-card span {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.location-floating-card strong {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
 @property --nav-angle {
   syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
 
+/* Animaciones generales y especificas de cada seccion. */
+
+/* Hace girar los bordes conic usando la propiedad CSS custom --nav-angle. */
 @keyframes nav-border-spin {
   to {
     --nav-angle: 360deg;
   }
 }
 
+/* Brillo diagonal del logo. */
 @keyframes brand-sheen {
   0%,
   52% {
@@ -1034,6 +1368,7 @@
   }
 }
 
+/* Movimiento flotante sutil del logo. */
 @keyframes brand-float {
   0%,
   100% {
@@ -1045,6 +1380,7 @@
   }
 }
 
+/* Entrada escalonada de enlaces en el menu mobile. */
 @keyframes mobile-link-arrive {
   from {
     opacity: 0;
@@ -1057,6 +1393,7 @@
   }
 }
 
+/* Movimiento de luces del fondo del Hero. */
 @keyframes hero-light-sweep {
   from {
     transform: translate3d(-1.5rem, 0, 0);
@@ -1067,6 +1404,7 @@
   }
 }
 
+/* Entrada vertical de textos del Hero. */
 @keyframes hero-copy-enter {
   from {
     opacity: 0;
@@ -1079,6 +1417,7 @@
   }
 }
 
+/* Brillo tipo sheen reutilizado en varios badges. */
 @keyframes hero-sheen {
   0%,
   48% {
@@ -1091,6 +1430,7 @@
   }
 }
 
+/* Pulso del punto activo en el kicker. */
 @keyframes hero-dot-ping {
   from {
     opacity: 0.85;
@@ -1103,6 +1443,7 @@
   }
 }
 
+/* Aparicion de chips del Hero. */
 @keyframes hero-chip-enter {
   from {
     opacity: 0;
@@ -1115,6 +1456,7 @@
   }
 }
 
+/* Inclinacion del anillo de escaneo. */
 @keyframes hero-stage-tilt {
   0%,
   100% {
@@ -1126,6 +1468,7 @@
   }
 }
 
+/* Pulso interno del anillo de escaneo. */
 @keyframes hero-ring-pulse {
   0%,
   100% {
@@ -1139,6 +1482,7 @@
   }
 }
 
+/* Entrada inicial del visual dental. */
 @keyframes hero-visual-enter {
   from {
     opacity: 0;
@@ -1151,6 +1495,7 @@
   }
 }
 
+/* Cambia forma del aura detras del diente. */
 @keyframes hero-aura-morph {
   0%,
   100% {
@@ -1164,6 +1509,7 @@
   }
 }
 
+/* Flotacion del diente SVG. */
 @keyframes hero-tooth-float {
   0%,
   100% {
@@ -1175,6 +1521,7 @@
   }
 }
 
+/* Dibuja y retrae el highlight del diente. */
 @keyframes tooth-highlight-draw {
   0%,
   100% {
@@ -1188,6 +1535,7 @@
   }
 }
 
+/* Flotacion de chips alrededor del diente. */
 @keyframes hero-chip-float {
   0%,
   100% {
@@ -1199,6 +1547,7 @@
   }
 }
 
+/* Entrada del panel de ruta de atencion. */
 @keyframes hero-panel-enter {
   from {
     opacity: 0;
@@ -1211,6 +1560,7 @@
   }
 }
 
+/* Entrada de tarjetas de tratamientos. */
 @keyframes treatment-card-enter {
   from {
     opacity: 0;
@@ -1223,6 +1573,7 @@
   }
 }
 
+/* Fade del fondo oscuro del modal. */
 @keyframes modal-backdrop-enter {
   from {
     opacity: 0;
@@ -1233,6 +1584,7 @@
   }
 }
 
+/* Entrada de la tarjeta del modal. */
 @keyframes modal-card-enter {
   from {
     opacity: 0;
@@ -1245,6 +1597,7 @@
   }
 }
 
+/* Entrada del contenido de tecnologia. */
 @keyframes technology-copy-enter {
   from {
     opacity: 0;
@@ -1257,6 +1610,7 @@
   }
 }
 
+/* Entrada de tarjetas de tecnologia. */
 @keyframes technology-item-enter {
   from {
     opacity: 0;
@@ -1269,6 +1623,7 @@
   }
 }
 
+/* Entrada con perspectiva del marco de tecnologia. */
 @keyframes technology-frame-enter {
   from {
     opacity: 0;
@@ -1281,6 +1636,7 @@
   }
 }
 
+/* Flotacion del marco de tecnologia. */
 @keyframes technology-frame-float {
   0%,
   100% {
@@ -1292,6 +1648,7 @@
   }
 }
 
+/* Barrido de escaneo sobre la imagen de tecnologia. */
 @keyframes technology-scan-pass {
   0%,
   22% {
@@ -1314,6 +1671,7 @@
   }
 }
 
+/* Flotacion de etiquetas HUD. */
 @keyframes technology-hud-float {
   0%,
   100% {
@@ -1325,6 +1683,7 @@
   }
 }
 
+/* Movimiento del glow dentro de la tarjeta de pacientes. */
 @keyframes patient-glow-drift {
   0%,
   100% {
@@ -1336,6 +1695,7 @@
   }
 }
 
+/* Microanimacion de estrellas del slide activo. */
 @keyframes patient-star-pop {
   0%,
   100% {
@@ -1347,6 +1707,58 @@
   }
 }
 
+/* Entrada del copy de ubicacion. */
+@keyframes location-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Entrada con perspectiva del mapa. */
+@keyframes location-map-enter {
+  from {
+    opacity: 0;
+    transform: rotateX(8deg) rotateY(10deg) translateY(28px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) rotateY(0deg) translateY(0) scale(1);
+  }
+}
+
+/* Flotacion del marco del mapa. */
+@keyframes location-map-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-0.65rem) rotate(-0.25deg);
+  }
+}
+
+/* Pulso del pin superpuesto al mapa. */
+@keyframes location-pin-pulse {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.75);
+  }
+}
+
+/* Ajustes tablet: principalmente Hero y panel flotante. */
 @media (max-width: 1023px) {
   .hero-title {
     max-width: 14ch;
@@ -1375,6 +1787,7 @@
   }
 }
 
+/* Ajustes mobile: compacta secciones, reduce alturas y evita cortes. */
 @media (max-width: 640px) {
   .hero-section {
     min-height: auto;
@@ -1571,8 +1984,29 @@
   .patient-control-next {
     right: calc(50% - 4rem);
   }
+
+  .location-section {
+    padding-top: 4rem;
+  }
+
+  .location-map-frame {
+    min-height: 24rem;
+    border-radius: 1.6rem;
+  }
+
+  .location-map-frame::after {
+    border-radius: calc(1.6rem - 1px);
+  }
+
+  .location-floating-card {
+    left: 1rem;
+    right: auto;
+    bottom: 1rem;
+    min-width: 8.8rem;
+  }
 }
 
+/* Entrada especifica del panel del Hero cuando en mobile pasa al flujo normal. */
 @keyframes hero-panel-enter-mobile {
   from {
     opacity: 0;
@@ -1585,6 +2019,7 @@
   }
 }
 
+/* Respeta usuarios con reduccion de movimiento activada. */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

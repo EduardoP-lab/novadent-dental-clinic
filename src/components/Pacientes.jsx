@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 
+// Resenas mostradas en el carrusel. Se mantienen locales para editar facil.
 const reviews = [
   {
     name: 'Mariana Lopez',
@@ -33,6 +34,7 @@ const reviews = [
   },
 ]
 
+// Componente pequeno para renderizar las 5 estrellas de cada resena.
 function Stars() {
   return (
     <div className="flex gap-1" aria-label="Calificacion de cinco estrellas">
@@ -55,14 +57,18 @@ function Stars() {
 }
 
 function Pacientes() {
+  // Indice de la resena activa al centro del carrusel.
   const [current, setCurrent] = useState(0)
 
   const total = reviews.length
 
+  // Calcula que tarjeta va al centro, izquierda, derecha u oculta.
+  // useMemo evita recalcular posiciones si el indice actual no cambio.
   const visibleReviews = useMemo(
     () =>
       reviews.map((review, index) => {
         const diff = (index - current + total) % total
+        // current = centro, next = derecha, prev = izquierda, hidden = fuera de escena.
         const state = diff === 0 ? 'current' : diff === 1 ? 'next' : diff === total - 1 ? 'prev' : 'hidden'
 
         return { ...review, index, state }
@@ -70,20 +76,24 @@ function Pacientes() {
     [current, total],
   )
 
+  // Navegacion circular hacia la tarjeta anterior.
   const goToPrevious = () => {
     setCurrent((value) => (value - 1 + total) % total)
   }
 
+  // Navegacion circular hacia la tarjeta siguiente.
   const goToNext = () => {
     setCurrent((value) => (value + 1) % total)
   }
 
   return (
+    // Seccion de pacientes enlazada desde la Navbar.
     <section
       id="pacientes"
       className="patients-section relative isolate overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-7xl">
+        {/* Encabezado centrado de la seccion. */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="patients-kicker inline-flex rounded-full border border-teal-100 bg-white/75 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-teal-800 shadow-sm backdrop-blur-xl">
             Pacientes
@@ -92,15 +102,17 @@ function Pacientes() {
             Historias reales de cuidado y confianza.
           </h2>
           <p className="mt-4 text-base font-medium leading-7 text-slate-600 sm:text-lg">
-            Reseñas breves de pacientes que valoran una atencion clara, moderna y tranquila.
+            Resenas breves de pacientes que valoran una atencion clara, moderna y tranquila.
           </p>
         </div>
 
+        {/* Contenedor del slider con perspectiva 3D desde CSS. */}
         <div className="patients-carousel-wrap mt-10">
+          {/* Flecha izquierda del carrusel. */}
           <button
             type="button"
             className="patient-control patient-control-prev"
-            aria-label="Ver reseña anterior"
+            aria-label="Ver resena anterior"
             onClick={goToPrevious}
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -114,8 +126,10 @@ function Pacientes() {
             </svg>
           </button>
 
+          {/* Slides posicionados por clases: current, prev, next o hidden. */}
           <div className="patients-carousel" aria-live="polite">
             {visibleReviews.map((review) => (
+              // Click en un lateral lo convierte en el slide central.
               <article
                 key={review.name}
                 className={`patient-slide patient-slide-${review.state}`}
@@ -130,6 +144,7 @@ function Pacientes() {
                 }}
               >
                 <div className="patient-card">
+                  {/* Glow decorativo que da profundidad al slide activo. */}
                   <div className="patient-card-glow" aria-hidden="true" />
 
                   <div className="relative z-10 flex items-center justify-between gap-4">
@@ -144,6 +159,7 @@ function Pacientes() {
                   </p>
 
                   <div className="relative z-10 mt-7 flex items-center gap-4">
+                    {/* Avatar textual generado con iniciales del nombre. */}
                     <div className="patient-avatar grid h-12 w-12 place-items-center rounded-2xl bg-slate-950 text-sm font-black text-white shadow-[0_14px_30px_rgba(15,23,42,0.24)]">
                       {review.name
                         .split(' ')
@@ -160,10 +176,11 @@ function Pacientes() {
             ))}
           </div>
 
+          {/* Flecha derecha del carrusel. */}
           <button
             type="button"
             className="patient-control patient-control-next"
-            aria-label="Ver reseña siguiente"
+            aria-label="Ver resena siguiente"
             onClick={goToNext}
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -178,13 +195,14 @@ function Pacientes() {
           </button>
         </div>
 
+        {/* Dots inferiores para saltar directo a una resena concreta. */}
         <div className="mt-7 flex justify-center gap-2">
           {reviews.map((review, index) => (
             <button
               key={review.name}
               type="button"
               className={`patient-dot ${current === index ? 'patient-dot-active' : ''}`}
-              aria-label={`Ver reseña ${index + 1}`}
+              aria-label={`Ver resena ${index + 1}`}
               aria-current={current === index}
               onClick={() => setCurrent(index)}
             />

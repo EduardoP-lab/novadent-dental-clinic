@@ -1,3 +1,4 @@
+// Chips rapidos que resumen tratamientos principales dentro del Hero.
 const treatments = [
   'Limpieza dental',
   'Blanqueamiento',
@@ -5,6 +6,7 @@ const treatments = [
   'Implantes',
 ]
 
+// Pasos de la tarjeta flotante que explica el proceso de atencion.
 const careSteps = [
   { label: 'Revision', value: 'Diagnostico claro' },
   { label: 'Plan', value: 'Tratamiento a medida' },
@@ -13,12 +15,16 @@ const careSteps = [
 
 function Hero() {
   return (
+    // Seccion inicial de la landing. Usa id="inicio" para conectar con la Navbar.
     <section
       id="inicio"
       className="hero-section relative isolate min-h-screen overflow-hidden bg-[#f7fbfb] px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36"
     >
+      {/* Layout principal: copy a la izquierda y pieza visual dental a la derecha. */}
       <div className="hero-grid relative z-10 mx-auto lg:grid sm:flex sm:flex-col max-w-7xl items-center gap-7 sm:gap-9 lg:min-h-[calc(100vh-9rem)] lg:grid-cols-[1.02fr_0.98fr] lg:gap-12">
+        {/* Bloque de texto, CTA y chips de servicios. */}
         <div className="hero-copy max-w-3xl">
+          {/* Kicker superior con punto animado para dar sensacion de estado activo. */}
           <div className="hero-kicker inline-flex max-w-full items-center gap-3 rounded-full border border-white/70 bg-white/70 px-4 py-2 shadow-[0_14px_40px_rgba(15,23,42,0.08)] backdrop-blur-2xl">
             <span className="hero-kicker-dot" aria-hidden="true" />
             <span className="text-xs font-black uppercase tracking-[0.24em] text-teal-800">
@@ -26,16 +32,19 @@ function Hero() {
             </span>
           </div>
 
+          {/* Titular principal de la pagina. */}
           <h1 className="hero-title mt-5 text-4xl font-black leading-[0.98] text-slate-950 sm:mt-7 sm:text-6xl sm:leading-[0.95] lg:text-7xl">
             Sonrisas sanas con tecnologia y cuidado real.
           </h1>
 
+          {/* Mensaje breve de valor, sin datos inventados ni promesas exageradas. */}
           <p className="hero-text mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600 sm:mt-6 sm:text-xl sm:leading-8">
             Atencion dental integral para prevenir, restaurar y mejorar tu sonrisa
             con diagnostico claro, tratamientos precisos y una experiencia tranquila
             desde la primera cita.
           </p>
 
+          {/* Acciones principales del Hero. */}
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row lg:justify-start justify-center">
             <a
               href="#cita"
@@ -66,6 +75,7 @@ function Hero() {
             </a>
           </div>
 
+          {/* Chips de tratamientos destacados. El delay CSS crea entrada escalonada. */}
           <div className="mt-5 grid grid-cols-2 gap-2 sm:mt-9 sm:gap-3 xl:grid-cols-4">
             {treatments.map((treatment, index) => (
               <span
@@ -79,8 +89,12 @@ function Hero() {
           </div>
         </div>
 
+        {/* Escena visual del Hero: diente SVG, chips flotantes y panel de proceso. */}
         <div className="hero-stage relative mx-auto grid w-full max-w-[36rem] place-items-center lg:max-w-none">
+          {/* Anillo de escaneo decorativo animado desde CSS. */}
           <div className="scan-ring" aria-hidden="true" />
+
+          {/* Visual puramente decorativo, por eso se oculta a lectores de pantalla. */}
           <div className="dental-visual" aria-hidden="true">
             <div className="tooth-aura" />
             <svg className="hero-tooth" viewBox="0 0 220 240" fill="none">
@@ -113,6 +127,7 @@ function Hero() {
             </div>
           </div>
 
+          {/* Tarjeta flotante con la ruta de atencion del paciente. */}
           <div className="care-panel">
             <div className="flex items-center justify-between gap-4">
               <div>
@@ -136,6 +151,7 @@ function Hero() {
               </span>
             </div>
 
+            {/* Lista compacta de pasos del proceso clinico. */}
             <div className="mt-5 grid gap-3">
               {careSteps.map((step) => (
                 <div
