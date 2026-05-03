@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Estado inicial del formulario. Cada propiedad corresponde a un campo solicitado.
@@ -71,10 +71,6 @@ function AgendaCita() {
   const progress = Math.round(
     (completedFields / Object.keys(initialForm).length) * 100,
   );
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   // Actualiza cada campo y reinicia el estado de exito si el usuario vuelve a editar.
   const handleChange = (event) => {

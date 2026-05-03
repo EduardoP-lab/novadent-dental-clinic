@@ -22,8 +22,8 @@ function Navbar() {
       {/* Capsula principal con efecto glass y borde animado desde CSS. */}
       <nav className="nav-shell pointer-events-auto relative mx-auto flex max-w-7xl items-center justify-between overflow-hidden rounded-[2rem] border border-white/65 bg-white/75 px-4 py-3 shadow-[0_18px_70px_rgba(15,23,42,0.12)] backdrop-blur-2xl sm:px-5">
         {/* Marca/logo de la clinica. El SVG es decorativo y usa aria-hidden. */}
-        <a
-          href="/#inicio"
+        <Link
+          to="/#inicio"
           aria-label="Ir al inicio"
           className="group relative z-10 flex items-center gap-3"
           onClick={closeMenu}
@@ -58,18 +58,18 @@ function Navbar() {
               Clinica dental
             </span>
           </span>
-        </a>
+        </Link>
 
         {/* Menu de escritorio: se oculta en mobile y aparece desde lg. */}
         <div className="relative z-10 hidden items-center gap-1 rounded-full border border-slate-200/80 bg-white/65 p-1 shadow-inner shadow-slate-200/70 lg:flex">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="nav-link rounded-full px-5 py-3 text-sm font-bold text-slate-700 transition-colors duration-300 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -125,15 +125,15 @@ function Navbar() {
         <div className="grid gap-2">
           {navItems.map((item, index) => (
             // Delay escalonado para que cada enlace entre con una pequena diferencia.
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="mobile-nav-link rounded-2xl px-4 py-4 text-base font-black text-slate-800 transition duration-300 hover:bg-teal-50 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
               style={{ '--delay': `${index * 70}ms` }}
               onClick={closeMenu}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
